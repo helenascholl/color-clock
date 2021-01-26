@@ -1,19 +1,32 @@
 function updateTime() {
     let timeElement = document.getElementById('time');
     let date = new Date();
-    let hexCode = `#${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
 
-    timeElement.innerText = hexCode;
-    timeElement.style.color = invertColor(hexCode);
-    document.body.style.backgroundColor = hexCode;
+    let red = date.getHours();
+    let green = date.getMinutes();
+    let blue = date.getSeconds();
+
+    let hexString = getHexString(red, green, blue);
+
+    timeElement.textContent = hexString;
+    timeElement.style.color = getInvertedHexString(red, green, blue);
+    document.body.style.backgroundColor = hexString;
 }
 
-function invertColor(hexCode) {
-    let red = 255 - parseInt(hexCode.substring(1, 3));
-    let green = 255 - parseInt(hexCode.substring(3, 5));
-    let blue = 255 - parseInt(hexCode.substring(5, 7));
+function getTwoDigitString(number) {
+    return ('0' + number).slice(-2);
+}
 
-    return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+function getHexString(red, green, blue) {
+    return `#${getTwoDigitString(red)}${getTwoDigitString(green)}${getTwoDigitString(blue)}`;
+}
+
+function getInvertedColor(color) {
+    return (255 - parseInt(color, 16)).toString(16);
+}
+
+function getInvertedHexString(red, green, blue) {
+    return getHexString(getInvertedColor(red), getInvertedColor(green), getInvertedColor(blue));
 }
 
 window.addEventListener('load', () => {
