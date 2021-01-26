@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    transition: background-color 500ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+span {
+    font-size: 5em;
+    transition: color 500ms, opacity 500ms;
+    font-family: 'PT Mono', monospace;
+}
