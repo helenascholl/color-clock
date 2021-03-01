@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'PT Mono';
+    src: url('./assets/PT_Mono/PTMono-Regular.ttf');
+}
+
 body {
     margin: 0;
     height: 100vh;
